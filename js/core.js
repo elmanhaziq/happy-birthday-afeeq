@@ -94,16 +94,24 @@ export function playSong() {
   setTimeout(() => (songBusy = false), t * 1000);
 }
 
+export function setSound(on) {
+  soundOn = on;
+  if (on) audioCtx().resume?.();
+  const hud = $('#soundBtn');
+  hud.textContent = on ? '🔊' : '🔇';
+  hud.setAttribute('aria-pressed', on);
+  hud.setAttribute('aria-label', on ? 'Sound on. Turn sound off' : 'Sound off. Turn sound on');
+  const intro = $('#introSound');
+  if (intro) {
+    intro.setAttribute('aria-pressed', on);
+    intro.innerHTML = on ? '🔊 <span>SOUND ON</span>' : '🔇 <span>SOUND OFF · tap for the full experience</span>';
+  }
+  if (on) sfx.achieve();
+}
+
 export function initSound() {
-  const btn = $('#soundBtn');
-  btn.addEventListener('click', () => {
-    soundOn = !soundOn;
-    if (soundOn) audioCtx().resume?.();
-    btn.textContent = soundOn ? '🔊' : '🔇';
-    btn.setAttribute('aria-pressed', soundOn);
-    btn.setAttribute('aria-label', soundOn ? 'Sound on. Turn sound off' : 'Sound off. Turn sound on');
-    if (soundOn) sfx.achieve();
-  });
+  $('#soundBtn').addEventListener('click', () => setSound(!soundOn));
+  $('#introSound')?.addEventListener('click', () => setSound(!soundOn));
 }
 
 /* ---------------- confetti (canvas-confetti from CDN, optional) ---------------- */
