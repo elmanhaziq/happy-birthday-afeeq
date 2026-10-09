@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HAPPY BIRTHDAY AFEEQ!!!</title>
+<meta name="description" content="Official birthday HQ of Afeeq: professional sleeper, part-time foodie, full-time legend.">
+<meta property="og:title" content="HAPPY BIRTHDAY AFEEQ!!!">
+<meta property="og:description" content="Warning: contains classified footage of Afeeq sleeping.">
+<meta property="og:image" content="img/2.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ GATE: wake him up ============ -->
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gate-inner">
+    <p class="gate-tag">⚠ SYSTEM ALERT ⚠</p>
+    <div class="gate-photo" id="gatePhoto">
+      <img src="img/6.jpg" alt="Afeeq asleep in a car, mouth slightly open">
+      <span class="z z1">Z</span><span class="z z2">z</span><span class="z z3">Z</span>
+    </div>
+    <h1 id="gateTitle" class="gate-title">Afeeq is currently asleep.</h1>
+    <p id="gateSub" class="gate-sub">As usual. Wake him up to start the party.</p>
+    <button id="wakeBtn" class="btn btn-big">WAKE HIM UP ⏰</button>
+    <div class="snooze" aria-hidden="true"><span id="snoozeBar"></span></div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="sticker s1">LEGEND</div>
+  <div class="sticker s2">SLEEPY</div>
+  <div class="sticker s3">1 YEAR OLDER</div>
+  <div class="sticker s4">STILL CUTE</div>
+
+  <div class="hero-text">
+    <p class="kicker">Today is a national holiday because…</p>
+    <h2 class="mega" aria-label="Happy Birthday">
+      <span class="wobble" data-text="HAPPY"></span>
+      <span class="wobble" data-text="BIRTHDAY"></span>
+    </h2>
+    <h2 class="mega name" aria-label="Afeeq"><span class="wobble" data-text="AFEEQ!"></span></h2>
+    <p class="lede">Professional sleeper. Part‑time food critic. Full‑time legend.<br>
+      This website was built without his consent.</p>
+    <div class="hero-ctas">
+      <a href="#docu" class="btn">See the evidence 📸</a>
+      <a href="#cake" class="btn btn-alt">Skip to cake 🎂</a>
+    </div>
+  </div>
+
+  <figure class="hero-photo" id="heroPhoto">
+    <img src="img/2.jpg" alt="Afeeq grinning in front of Nasi Bamboo Sungai Klah">
+    <figcaption>the birthday boy (awake, rare footage)</figcaption>
+    <div class="badge-spin" aria-hidden="true">
+      <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <text><textPath href="#circ">★ BIRTHDAY BOY ★ BIRTHDAY BOY </textPath></text></svg>
+    </div>
+  </figure>
+</header>
+
+<div class="ticker" aria-label="Breaking news">
+  <div class="ticker-label">BREAKING</div>
+  <div class="ticker-track"><div class="ticker-move" id="tickerMove"></div></div>
+</div>
+
+<main>
+
+<!-- ============ DOCUMENTARY ============ -->
+<section id="docu" class="section">
+  <p class="eyebrow">Episode 1</p>
+  <h2 class="title">AFEEQ: A Nature Documentary</h2>
+  <p class="section-sub">Rare footage of the creature in his natural habitats. <span class="desk-only">Drag the photos around. Click one to hear the narrator.</span><span class="mob-only">Tap a photo to hear the narrator.</span></p>
+  <div class="board" id="board"></div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section id="stats" class="section">
+  <p class="eyebrow">Episode 2</p>
+  <h2 class="title">Character Select</h2>
+  <div class="char-card">
+    <div class="char-left">
+      <img src="img/1.jpg" alt="Afeeq smiling on a street lined with red lanterns">
+      <div class="char-name">AFEEQ <small>Lv. UP!</small></div>
+      <div class="char-class">Class: Sleep Mage</div>
+    </div>
+    <div class="char-right">
+      <ul class="stats" id="statList"></ul>
+      <div class="special">
+        <strong>Special move:</strong> <em>Instant Nap™</em>. Falls asleep in any moving vehicle within 4 minutes. Cooldown: 0s.
+      </div>
+      <div class="special">
+        <strong>Weakness:</strong> alarm clocks (immune), mornings (allergic), being asked "dah sampai ke?"
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GAME ============ -->
+<section id="game" class="section">
+  <p class="eyebrow">Episode 3 · Minigame</p>
+  <h2 class="title">WAKE AFEEQ UP!</h2>
+  <p class="section-sub">Smack the sleeping Afeeqs. <strong>Do NOT</strong> touch him while he's eating. That's -2 points and a lifetime ban.</p>
+  <div class="game-hud">
+    <div>Score <b id="score">0</b></div>
+    <div>Time <b id="time">20</b>s</div>
+    <div>Best <b id="best">0</b></div>
+  </div>
+  <div class="holes" id="holes"></div>
+  <div class="game-ctl">
+    <button id="startGame" class="btn btn-big">START ⏰</button>
+    <p id="gameMsg" class="game-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- ============ CAKE ============ -->
+<section id="cake" class="section">
+  <p class="eyebrow">Episode 4 · The Main Event</p>
+  <h2 class="title">Blow Out The Candles</h2>
+  <p class="section-sub">Blow into your microphone like you're cooling Afeeq's rice. Or just tap each candle, coward.</p>
+  <div class="cake-wrap">
+    <div class="cake" id="cakeEl">
+      <div class="candles" id="candles"></div>
+      <div class="layer l1"><span>HBD</span></div>
+      <div class="layer l2"><span>AFEEQ</span></div>
+      <div class="plate"></div>
+    </div>
+  </div>
+  <div class="cake-ctl">
+    <button id="micBtn" class="btn">🎤 Use microphone</button>
+    <button id="songBtn" class="btn btn-alt">🎵 Play the song</button>
+  </div>
+  <p id="cakeMsg" class="cake-msg" aria-live="polite"></p>
+</section>
+
+<!-- ============ WISHES ============ -->
+<section id="wishes" class="section">
+  <p class="eyebrow">Episode 5</p>
+  <h2 class="title">Send A Wish Balloon</h2>
+  <p class="section-sub">Type a wish for Afeeq and release it into the sky.</p>
+  <form id="wishForm" class="wish-form">
+    <label for="wishInput" class="sr-only">Your wish</label>
+    <input id="wishInput" maxlength="60" placeholder="e.g. may you wake up before 12pm" autocomplete="off">
+    <button class="btn" type="submit">Release 🎈</button>
+  </form>
+  <div class="sky" id="sky" aria-live="polite"></div>
+</section>
+
+<!-- ============ LETTER ============ -->
+<section id="letter" class="section">
+  <div class="letter">
+    <p class="eyebrow">Okay, serious for 10 seconds</p>
+    <h2 class="title">Dear Afeeq,</h2>
+    <p>Jokes aside, happy birthday bro. Thanks for being the guy who's always down for a makan trip, the guy who makes every car ride funnier (even when you're unconscious), and the guy whose smile in every photo says "I have no idea what's happening but I'm happy to be here."</p>
+    <p>May this year bring you good health, good food, great sleep (you already have that one), wins in every ranked match, and people who appreciate you as much as we do.</p>
+    <p>Stay weird. Stay sleepy. Stay you.</p>
+    <p class="sign">— your friends, who have many more photos 📸</p>
+    <button id="finalBtn" class="btn btn-big">ONE MORE CONFETTI 🎉</button>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>No Afeeqs were harmed in the making of this website. Several were photographed while asleep.</p>
+  <a href="#top" class="btn btn-small">Back to top ↑</a>
+</footer>
+
+<!-- lightbox -->
+<dialog id="lightbox" aria-labelledby="lbCap">
+  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  <img id="lbImg" alt="">
+  <p class="lb-narr">🎙️ <em>Narrator voice:</em></p>
+  <p id="lbCap" class="lb-cap"></p>
+  <div class="lb-nav">
+    <button class="btn btn-small" id="lbPrev">← Prev</button>
+    <button class="btn btn-small" id="lbNext">Next →</button>
+  </div>
+</dialog>
+
+<button id="soundToggle" class="fab" aria-pressed="true" aria-label="Toggle sound effects">🔊</button>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
