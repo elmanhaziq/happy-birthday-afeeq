@@ -1,5 +1,5 @@
 // Scene 05 — the ceremony: countdown, level-up, spotlight reveal, gift letter, true ending.
-import { $, sfx, boom, rain, playSong, sleep, achCount, achTotal, reduceMotion, rand } from './core.js?v=7';
+import { $, sfx, boom, rain, playSong, sleep, achCount, achTotal, reduceMotion, rand } from './core.js?v=8';
 
 const PHOTOS = ['1', '2', '3', '4', '5', '6'];
 

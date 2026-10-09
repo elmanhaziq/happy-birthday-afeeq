@@ -1,6 +1,6 @@
 // Scene 04 — the chaos room: do-not-press, aura detector, diagnostic,
 // wish generator, light switch secrets and the wake-up minigame.
-import { $, $$, sfx, unlock, pick, rand, sleep, popText, restartAnim, reduceMotion, boom, store } from './core.js?v=7';
+import { $, $$, sfx, unlock, pick, rand, sleep, popText, restartAnim, reduceMotion, boom, store } from './core.js?v=8';
 
 /* ---------------- DO NOT PRESS ---------------- */
 function initDontPress() {

@@ -1,5 +1,5 @@
 // Scene 02 — the embarrassment archive: dossier, redactions, six exhibits.
-import { $, $$, sfx, unlock, sleep, restartAnim, reduceMotion } from './core.js?v=7';
+import { $, $$, sfx, unlock, sleep, restartAnim, reduceMotion } from './core.js?v=8';
 
 const NEWS = [
   'Local man turns one year older, still has not woken up',

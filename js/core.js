@@ -15,8 +15,50 @@ export const store = {
 /* ---------------- sound (synthesised, off by default) ---------------- */
 let ctx = null;
 let soundOn = false;
-export const audioCtx = () => (ctx ||= new (window.AudioContext || window.webkitAudioContext)());
+export const audioCtx = () => {
+  ctx ||= new (window.AudioContext || window.webkitAudioContext)();
+  // Safari suspends (or 'interrupts') the context after backgrounding; nudge it back.
+  if (ctx.state !== 'running') ctx.resume?.().catch(() => {});
+  return ctx;
+};
 export const isSoundOn = () => soundOn;
+
+// --- Safari / iOS unlock -------------------------------------------------
+// iOS routes Web Audio through the "ambient" channel, which the silent switch
+// mutes. Declaring a playback session (Safari 16.4+) or playing a looping
+// silent <audio> element (older iOS) moves it to the media channel instead.
+let silentEl = null;
+function silentWavUrl() {
+  const rate = 8000, n = rate / 2, buf = new ArrayBuffer(44 + n), v = new DataView(buf);
+  const str = (o, t) => [...t].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  str(0, 'RIFF'); v.setUint32(4, 36 + n, true); str(8, 'WAVE'); str(12, 'fmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, rate, true); v.setUint32(28, rate, true); v.setUint16(32, 1, true); v.setUint16(34, 8, true);
+  str(36, 'data'); v.setUint32(40, n, true);
+  for (let i = 0; i < n; i++) v.setUint8(44 + i, 128);
+  return URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+}
+function unlockAudio() {
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch {}
+  try {
+    if (!silentEl) {
+      silentEl = new Audio(silentWavUrl());
+      silentEl.loop = true;
+      silentEl.setAttribute('playsinline', '');
+      silentEl.volume = 0.01;
+    }
+    silentEl.play().catch(() => {});
+  } catch {}
+  const a = audioCtx();
+  // Must start a real (silent) source inside the tap for Safari to unlock.
+  const src = a.createBufferSource();
+  src.buffer = a.createBuffer(1, 1, 22050);
+  src.connect(a.destination);
+  src.start(0);
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && soundOn) { audioCtx(); silentEl?.play().catch(() => {}); }
+});
 
 export function tone(freq, dur = .15, type = 'square', vol = .07, when = 0) {
   if (!soundOn) return;
@@ -37,7 +79,7 @@ function noise(dur = .3, vol = .2, when = 0, filterFreq = 800) {
   if (!soundOn) return;
   const a = audioCtx();
   const t = a.currentTime + when;
-  const buf = a.createBuffer(1, a.sampleRate * dur, a.sampleRate);
+  const buf = a.createBuffer(1, Math.max(1, Math.floor(a.sampleRate * dur)), a.sampleRate);
   const d = buf.getChannelData(0);
   for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
   const src = a.createBufferSource();
@@ -96,7 +138,8 @@ export function playSong() {
 
 export function setSound(on) {
   soundOn = on;
-  if (on) audioCtx().resume?.();
+  if (on) unlockAudio();
+  else silentEl?.pause();
   const hud = $('#soundBtn');
   hud.textContent = on ? '🔊' : '🔇';
   hud.setAttribute('aria-pressed', on);

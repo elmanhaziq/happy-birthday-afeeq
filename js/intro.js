@@ -1,5 +1,5 @@
 // Scene 01 — the mysterious introduction.
-import { $, sleep, sfx, boom, playSong, unlock, reduceMotion, restartAnim, pick } from './core.js?v=7';
+import { $, sleep, sfx, boom, playSong, unlock, reduceMotion, restartAnim, pick } from './core.js?v=8';
 
 const LINES = [
   { text: 'A VERY IMPORTANT EVENT IS ABOUT TO BEGIN...', big: true },

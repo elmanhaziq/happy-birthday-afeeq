@@ -1,11 +1,11 @@
 // Entry point: wires up every scene.
-import { $, $$, initSound, initAchievements, initImageFallbacks, initReveal } from './core.js?v=7';
-import { initIntro, replayIntro } from './intro.js?v=7';
-import { initArchive } from './archive.js?v=7';
-import { initMultiverse } from './multiverse.js?v=7';
-import { initChaos } from './chaos.js?v=7';
-import { initFinale } from './finale.js?v=7';
-import { initSecret } from './secret.js?v=7';
+import { $, $$, initSound, initAchievements, initImageFallbacks, initReveal } from './core.js?v=8';
+import { initIntro, replayIntro } from './intro.js?v=8';
+import { initArchive } from './archive.js?v=8';
+import { initMultiverse } from './multiverse.js?v=8';
+import { initChaos } from './chaos.js?v=8';
+import { initFinale } from './finale.js?v=8';
+import { initSecret } from './secret.js?v=8';
 
 function initHud() {
   $('[data-scene="intro"]').addEventListener('click', replayIntro);
