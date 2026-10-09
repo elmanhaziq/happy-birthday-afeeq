@@ -2,164 +2,441 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HAPPY BIRTHDAY AFEEQ!!!</title>
-<meta name="description" content="Official birthday HQ of Afeeq: professional sleeper, part-time foodie, full-time legend.">
-<meta property="og:title" content="HAPPY BIRTHDAY AFEEQ!!!">
-<meta property="og:description" content="Warning: contains classified footage of Afeeq sleeping.">
-<meta property="og:image" content="img/2.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AFEEQ.EXE — Classified Birthday Event</title>
+<meta name="description" content="A very important event. Classified. Do not show his mother.">
+<meta property="og:title" content="AFEEQ.EXE — Classified Birthday Event">
+<meta property="og:description" content="A very important event is about to begin...">
+<meta property="og:image" content="https://elmanhaziq.github.io/happy-birthday-afeeq/img/opt/6-sm.webp">
+<meta name="theme-color" content="#0c0a09">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/opt/6-sm.webp">
+<link rel="stylesheet" href="css/style.css?v=5">
 </head>
-<body>
+<body class="intro-active">
+<a class="skip-link" href="#archive">Skip to content</a>
 
-<!-- ============ GATE: wake him up ============ -->
-<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
-  <div class="gate-inner">
-    <p class="gate-tag">⚠ SYSTEM ALERT ⚠</p>
-    <div class="gate-photo" id="gatePhoto">
-      <img src="img/6.jpg" alt="Afeeq asleep in a car, mouth slightly open">
-      <span class="z z1">Z</span><span class="z z2">z</span><span class="z z3">Z</span>
-    </div>
-    <h1 id="gateTitle" class="gate-title">Afeeq is currently asleep.</h1>
-    <p id="gateSub" class="gate-sub">As usual. Wake him up to start the party.</p>
-    <button id="wakeBtn" class="btn btn-big">WAKE HIM UP ⏰</button>
-    <div class="snooze" aria-hidden="true"><span id="snoozeBar"></span></div>
+<!-- ================================================================
+     SCENE 01 — THE MYSTERIOUS INTRODUCTION
+     ================================================================ -->
+<div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Introduction">
+  <canvas id="dust" class="intro-dust" aria-hidden="true"></canvas>
+  <div class="intro-light" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="intro-stage" id="introStage1">
+    <div class="intro-lines" id="introLines" aria-live="polite"></div>
+    <button id="revealBtn" class="btn btn-blood" hidden>REVEAL THE VICTIM</button>
   </div>
+
+  <div class="intro-stage" id="introStage2" hidden>
+    <p class="intro-kicker">TODAY'S VICTIM IS</p>
+    <h1 class="intro-name" data-text="AFEEQ">AFEEQ</h1>
+    <p class="intro-sub">AND IT'S HIS <span>BIRTHDAY.</span></p>
+    <figure class="intro-subject">
+      <img src="img/opt/6-sm.webp" width="640" height="854" alt="Afeeq asleep in a car, glasses on, head tilted back">
+      <span class="zz zz1" aria-hidden="true">Z</span><span class="zz zz2" aria-hidden="true">z</span><span class="zz zz3" aria-hidden="true">Z</span>
+    </figure>
+    <p class="intro-status" id="subjectStatus" aria-live="polite">SUBJECT STATUS: <b>ASLEEP.</b> OBVIOUSLY.</p>
+    <button id="wakeBtn" class="btn btn-blood">WAKE HIM UP</button>
+  </div>
+
+  <button id="skipIntro" class="intro-skip">skip intro →</button>
 </div>
 
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-  <div class="sticker s1">LEGEND</div>
-  <div class="sticker s2">SLEEPY</div>
-  <div class="sticker s3">1 YEAR OLDER</div>
-  <div class="sticker s4">STILL CUTE</div>
-
-  <div class="hero-text">
-    <p class="kicker">Today is a national holiday because…</p>
-    <h2 class="mega" aria-label="Happy Birthday">
-      <span class="wobble" data-text="HAPPY"></span>
-      <span class="wobble" data-text="BIRTHDAY"></span>
-    </h2>
-    <h2 class="mega name" aria-label="Afeeq"><span class="wobble" data-text="AFEEQ!"></span></h2>
-    <p class="lede">Professional sleeper. Part‑time food critic. Full‑time legend.<br>
-      This website was built without his consent.</p>
-    <div class="hero-ctas">
-      <a href="#docu" class="btn">See the evidence 📸</a>
-      <a href="#cake" class="btn btn-alt">Skip to cake 🎂</a>
-    </div>
+<!-- ================================================================
+     HUD
+     ================================================================ -->
+<header class="hud" id="hud">
+  <button class="hud-logo" id="logo" aria-label="AFEEQ.EXE (tap me 7 times)">AFEEQ<span>.EXE</span></button>
+  <nav class="hud-nav" aria-label="Scenes">
+    <button data-scene="intro" class="hud-link" aria-label="Replay intro"><b>01</b><span>Intro</span></button>
+    <a href="#archive" class="hud-link"><b>02</b><span>Archive</span></a>
+    <a href="#multiverse" class="hud-link"><b>03</b><span>Multiverse</span></a>
+    <a href="#chaos" class="hud-link"><b>04</b><span>Chaos</span></a>
+    <a href="#finale" class="hud-link"><b>05</b><span>Finale</span></a>
+  </nav>
+  <div class="hud-tools">
+    <button class="hud-btn" id="achBtn" aria-haspopup="dialog" aria-label="Achievements">🏆 <span id="achCount">0/10</span></button>
+    <button class="hud-btn" id="soundBtn" aria-pressed="false" aria-label="Sound off. Turn sound on">🔇</button>
   </div>
-
-  <figure class="hero-photo" id="heroPhoto">
-    <img src="img/2.jpg" alt="Afeeq grinning in front of Nasi Bamboo Sungai Klah">
-    <figcaption>the birthday boy (awake, rare footage)</figcaption>
-    <div class="badge-spin" aria-hidden="true">
-      <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
-        <text><textPath href="#circ">★ BIRTHDAY BOY ★ BIRTHDAY BOY </textPath></text></svg>
-    </div>
-  </figure>
 </header>
 
-<div class="ticker" aria-label="Breaking news">
-  <div class="ticker-label">BREAKING</div>
-  <div class="ticker-track"><div class="ticker-move" id="tickerMove"></div></div>
-</div>
+<main id="main">
 
-<main>
+<!-- ================================================================
+     SCENE 02 — THE EMBARRASSMENT ARCHIVE
+     ================================================================ -->
+<section id="archive" class="scene archive" aria-labelledby="archiveTitle">
+  <div class="ticker" aria-label="Breaking news">
+    <div class="ticker-label">BREAKING</div>
+    <div class="ticker-track"><div class="ticker-move" id="tickerMove"></div></div>
+  </div>
 
-<!-- ============ DOCUMENTARY ============ -->
-<section id="docu" class="section">
-  <p class="eyebrow">Episode 1</p>
-  <h2 class="title">AFEEQ: A Nature Documentary</h2>
-  <p class="section-sub">Rare footage of the creature in his natural habitats. <span class="desk-only">Drag the photos around. Click one to hear the narrator.</span><span class="mob-only">Tap a photo to hear the narrator.</span></p>
-  <div class="board" id="board"></div>
-</section>
+  <div class="archive-head">
+    <p class="file-no">FILE NO. 0910-AFQ · CLEARANCE: BROS ONLY</p>
+    <h2 id="archiveTitle" class="archive-title">AFEEQ<span>.EXE</span></h2>
+    <p class="archive-subtitle">Classified personality record</p>
+    <div class="stamp stamp-mother" aria-hidden="true">DO NOT SHOW<br>HIS MOTHER</div>
+  </div>
 
-<!-- ============ STATS ============ -->
-<section id="stats" class="section">
-  <p class="eyebrow">Episode 2</p>
-  <h2 class="title">Character Select</h2>
-  <div class="char-card">
-    <div class="char-left">
-      <img src="img/1.jpg" alt="Afeeq smiling on a street lined with red lanterns">
-      <div class="char-name">AFEEQ <small>Lv. UP!</small></div>
-      <div class="char-class">Class: Sleep Mage</div>
+  <!-- dossier -->
+  <article class="dossier reveal" aria-label="Subject profile">
+    <div class="dossier-tab">SUBJECT PROFILE</div>
+    <div class="dossier-photo">
+      <span class="clip" aria-hidden="true"></span>
+      <img src="img/opt/2-sm.webp" width="640" height="853" loading="lazy" decoding="async" alt="Afeeq grinning outside Nasi Bamboo Sungai Klah">
+      <span class="stamp stamp-small" aria-hidden="true">IDENTIFIED</span>
     </div>
-    <div class="char-right">
-      <ul class="stats" id="statList"></ul>
-      <div class="special">
-        <strong>Special move:</strong> <em>Instant Nap™</em>. Falls asleep in any moving vehicle within 4 minutes. Cooldown: 0s.
+    <dl class="dossier-fields">
+      <div><dt>NAME</dt><dd>AFEEQ</dd></div>
+      <div><dt>STATUS</dt><dd><span class="pill pill-red">BIRTHDAY · ACTIVE</span></dd></div>
+      <div><dt>THREAT LEVEL</dt><dd><span class="threat"><i style="--w:38%"></i></span> MILD. UNLESS HUNGRY.</dd></div>
+      <div><dt>KNOWN ALIASES</dt><dd><button class="redact" data-reveal="The Sleeper. The Rice Cooler. Mr. Five More Minutes.">██████████████</button></dd></div>
+      <div><dt>LAST SEEN</dt><dd><button class="redact" data-reveal="Asleep. Wherever you last saw him, he's asleep there now.">█████████████████</button></dd></div>
+      <div><dt>WEAKNESSES</dt><dd><button class="redact" data-reveal="Moving vehicles. Hot rice. Any couch within 5 metres.">████████████</button></dd></div>
+      <div><dt>NOTABLE ACHIEVEMENTS</dt><dd><button class="redact" data-reveal="Survived another full year. Was awake for some of it.">███████████████████</button></dd></div>
+      <div><dt>HAIR</dt><dd><button class="redact" data-reveal="Classified for national security reasons. It has its own weather.">██████████</button></dd></div>
+    </dl>
+    <p class="dossier-hint">↑ Tap the black bars to leak classified info.</p>
+  </article>
+
+  <!-- evidence locker -->
+  <div class="locker-head reveal">
+    <h3 class="locker-title">THE EVIDENCE LOCKER</h3>
+    <p class="locker-sub">6 exhibits. Revealed one at a time, for maximum damage.</p>
+    <div class="locker-ctl">
+      <button id="nextExhibit" class="btn btn-blood">REVEAL EXHIBIT A</button>
+      <span class="locker-count" id="exhibitCount" aria-live="polite">0 / 6 DISCLOSED</span>
+    </div>
+  </div>
+
+  <div class="exhibits" id="exhibits">
+
+    <!-- A · MUGSHOT -->
+    <article class="exhibit ex-mug" hidden data-ex="A" aria-label="Exhibit A: mugshot">
+      <div class="ex-label">EXHIBIT A</div>
+      <div class="mug-frame">
+        <div class="mug-photo" id="mugPhoto">
+          <img src="img/opt/6.webp" width="1400" height="1868" loading="lazy" decoding="async" alt="Close-up of Afeeq asleep in a car, glasses on, mouth closed, head tilted back">
+          <span class="enhance-flash" aria-hidden="true">ENHANCE</span>
+        </div>
+        <div class="mug-board">
+          <b>AFEEQ</b>
+          <span>CASE #0910 · LOCATION: PASSENGER SEAT · TIME: NAP O'CLOCK</span>
+          <span>CHARGE: UNAUTHORISED NAPPING IN A MOVING VEHICLE</span>
+        </div>
       </div>
-      <div class="special">
-        <strong>Weakness:</strong> alarm clocks (immune), mornings (allergic), being asked "dah sampai ke?"
+      <div class="ex-notes">
+        <h4>The Mugshot</h4>
+        <p>Subject was photographed at point-blank range by a friend. He showed no resistance. He showed no anything.</p>
+        <p>Note the sunlight. Note the jawline. Note the glasses, still on, because a professional never removes his equipment.</p>
+        <button class="btn btn-paper" id="enhanceBtn">🔍 ENHANCE</button>
+        <p class="ex-aside" id="enhanceMsg" aria-live="polite"></p>
+      </div>
+    </article>
+
+    <!-- B · MAGAZINE COVER -->
+    <article class="exhibit ex-mag" hidden data-ex="B" aria-label="Exhibit B: magazine cover">
+      <div class="ex-label">EXHIBIT B</div>
+      <div class="mag-wrap">
+        <div class="mag" id="mag">
+          <div class="mag-front">
+            <img src="img/opt/5.webp" width="810" height="1080" loading="lazy" decoding="async" alt="Afeeq in an Inter Milan jersey leaning over the table, blowing on his plate of rice">
+            <div class="mag-mast">NASI</div>
+            <div class="mag-issue">THE BIRTHDAY ISSUE · RM 0.00</div>
+            <div class="mag-line l1"><b>EXCLUSIVE:</b><br>THE MAN WHO BLEW ON RICE FOR 45 MINUTES</div>
+            <div class="mag-line l2">"IT WAS STILL HOT"<br><em>— a broken man</em></div>
+            <div class="mag-line l3">INTER JERSEY:<br>FASHION OR<br>CRY FOR HELP?</div>
+            <div class="mag-line l4">PLUS: THE OMELETTE<br>SPEAKS OUT</div>
+          </div>
+          <div class="mag-back">
+            <p class="mag-p2">PAGE 2 · THE INTERVIEW</p>
+            <dl class="qa">
+              <dt>Q: Is the rice hot?</dt><dd>A: <em>*blows*</em></dd>
+              <dt>Q: Is it still hot?</dt><dd>A: <em>*blows harder*</em></dd>
+              <dt>Q: Have you considered just… waiting?</dt><dd>A: <em>*leans closer, blows with intent*</em></dd>
+              <dt>Q: Any words for your fans?</dt><dd>A: <em>*the rice is now frozen*</em></dd>
+            </dl>
+            <p class="mag-foot">Interview conducted over 45 minutes. 44 of them were blowing.</p>
+          </div>
+        </div>
+      </div>
+      <div class="ex-notes">
+        <h4>The Cover Star</h4>
+        <p>Rice is on the plate. Omelette is on standby. One phone is face-down because this moment requires total focus.</p>
+        <p>Experts estimate the rice dropped 0.5°C per minute. The jersey did not help.</p>
+        <button class="btn btn-paper" id="flipMag">📖 READ THE INTERVIEW</button>
+      </div>
+    </article>
+
+    <!-- C · EVIDENCE PHOTO -->
+    <article class="exhibit ex-evi" hidden data-ex="C" aria-label="Exhibit C: annotated evidence photo">
+      <div class="ex-label">EXHIBIT C</div>
+      <div class="evi-photo" id="eviPhoto">
+        <img src="img/opt/3.webp" width="1400" height="1050" loading="lazy" decoding="async" alt="Afeeq asleep in the back seat of a car, head resting against the window">
+        <svg class="evi-svg" viewBox="0 0 100 75" preserveAspectRatio="none" aria-hidden="true">
+          <ellipse cx="58.5" cy="56" rx="8.5" ry="10" />
+          <ellipse cx="84" cy="41" rx="12" ry="7" />
+          <path d="M28 20 L51 45" /><path d="M78 18 L61 50" /><path d="M90 56 L87 48" />
+        </svg>
+        <span class="evi-note n1">head: fully committed to the window</span>
+        <span class="evi-note n2">glasses still on. professional.</span>
+        <span class="evi-note n3">the car hasn't even left the parking lot</span>
+        <span class="evi-tag">EVIDENCE #C-03 · DO NOT WAKE</span>
+      </div>
+      <div class="ex-notes">
+        <h4>The Back Seat Incident</h4>
+        <p>Through the rear window: a parking lot. Other cars. Daylight. Absolutely no reason to be asleep.</p>
+        <p>And yet.</p>
+        <button class="btn btn-paper" id="analyzeBtn">🖊 RUN FORENSIC ANALYSIS</button>
+      </div>
+    </article>
+
+    <!-- D · AWARD NOMINATION -->
+    <article class="exhibit ex-award" hidden data-ex="D" aria-label="Exhibit D: award nomination">
+      <div class="ex-label">EXHIBIT D</div>
+      <div class="award">
+        <p class="award-top">✦ THE SUNGAI KLAH ACADEMY AWARDS ✦</p>
+        <div class="award-oval">
+          <img src="img/opt/2.webp" width="1400" height="1867" loading="lazy" decoding="async" alt="Afeeq smiling and pointing at the Nasi Bamboo Sungai Klah sign">
+        </div>
+        <p class="award-nom">OFFICIAL NOMINEE</p>
+        <h4 class="award-cat">Best Unpaid Brand Ambassador</h4>
+        <p class="award-for">for his role in <em>"Pointing At The Nasi Bamboo Sign Like It's His Restaurant"</em></p>
+        <button class="envelope" id="envelope" aria-expanded="false">
+          <span class="env-flap" aria-hidden="true"></span>
+          <span class="env-label">OPEN THE ENVELOPE</span>
+          <span class="env-result" id="envResult">AND THE WINNER IS…<br><b>AFEEQ.</b><br><small>(he was the only nominee)</small></span>
+        </button>
+      </div>
+      <div class="ex-notes">
+        <h4>The Nomination</h4>
+        <p>Red shirt. Bag strapped across the chest. Pointing at the sign with the confidence of a man who owns 51% of the business.</p>
+        <p>Payment received for this promotion: RM 0.00. Smiles given: unlimited.</p>
+      </div>
+    </article>
+
+    <!-- E · CCTV -->
+    <article class="exhibit ex-cctv" hidden data-ex="E" aria-label="Exhibit E: CCTV footage">
+      <div class="ex-label">EXHIBIT E</div>
+      <div class="cctv" id="cctv">
+        <img src="img/opt/4.webp" width="1400" height="788" loading="lazy" decoding="async" alt="Afeeq lying on a couch, smiling at a phone held up with both hands, a lamp behind him">
+        <div class="cctv-scan" aria-hidden="true"></div>
+        <div class="cctv-hud" aria-hidden="true">
+          <span class="rec">● REC</span><span>CAM 04 · LIVING ROOM</span><span id="cctvClock">00:00:00</span>
+        </div>
+        <p class="cctv-sub" id="cctvSub" aria-live="polite"></p>
+      </div>
+      <div class="ex-notes">
+        <h4>The Surveillance Footage</h4>
+        <p>Subject located horizontally on a couch. Phone held at maximum altitude. Smile suggests either a win or a very good meme.</p>
+        <p>The lamp has seen things. The lamp will not testify.</p>
+        <button class="btn btn-paper" id="playCctv">▶ PLAY FOOTAGE</button>
+      </div>
+    </article>
+
+    <!-- F · WANTED POSTER -->
+    <article class="exhibit ex-wanted" hidden data-ex="F" aria-label="Exhibit F: wanted poster">
+      <div class="ex-label">EXHIBIT F</div>
+      <div class="wanted">
+        <p class="wanted-title">WANTED</p>
+        <p class="wanted-sub">FOR SMILING IN IPOH LIKE HE OWNS THE PLACE</p>
+        <div class="wanted-photo">
+          <img src="img/opt/1.webp" width="1400" height="1867" loading="lazy" decoding="async" alt="Afeeq grinning in the foreground of an old town street lined with red lanterns">
+        </div>
+        <p class="wanted-reward">REWARD: ONE (1) NASI BAMBOO</p>
+        <p class="wanted-desc">Last seen near red lanterns. Glasses. Big hair. Even bigger grin. Approach with snacks.</p>
+        <div class="tabs" id="tabs" aria-label="Tear-off tabs"></div>
+      </div>
+      <div class="ex-notes">
+        <h4>The Wanted Poster</h4>
+        <p>Spotted in an old-town street full of lanterns, shophouses and tourists, the subject chose to stare directly into the lens like a man starring in his own travel vlog.</p>
+        <p>Tear off a tab to report a sighting.</p>
+        <p class="ex-aside" id="tabMsg" aria-live="polite"></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================================================================
+     SCENE 03 — THE AFEEQ MULTIVERSE
+     ================================================================ -->
+<section id="multiverse" class="scene multiverse" aria-labelledby="mvTitle">
+  <div class="mv-stars" aria-hidden="true"></div>
+  <div class="mv-head reveal">
+    <p class="mv-kicker">SCENE 03 · THE AFEEQ MULTIVERSE</p>
+    <h2 id="mvTitle" class="mv-title">CHOOSE YOUR<br><span>AFEEQ</span></h2>
+    <p class="mv-sub">Five Afeeqs. Five universes. All of them sleepy.</p>
+  </div>
+
+  <div class="mv-layout">
+    <div class="mv-select" role="tablist" aria-label="Choose an Afeeq" id="mvSelect"></div>
+
+    <div class="mv-stage">
+      <div class="mv-card" id="mvCard" role="tabpanel" aria-live="polite">
+        <div class="mv-shine" aria-hidden="true"></div>
+        <div class="mv-portrait"><img id="mvImg" src="img/opt/6-sm.webp" width="640" height="854" alt=""></div>
+        <div class="mv-info">
+          <p class="mv-class" id="mvClass"></p>
+          <h3 class="mv-name" id="mvName"></h3>
+          <p class="mv-desc" id="mvDesc"></p>
+          <ul class="mv-stats" id="mvStats"></ul>
+          <div class="mv-ability"><b>SPECIAL MOVE</b><span id="mvAbility"></span></div>
+          <div class="mv-ability weak"><b>WEAKNESS</b><span id="mvWeak"></span></div>
+          <p class="mv-disclaimer">* Stats verified by absolutely nobody.</p>
+        </div>
+      </div>
+      <button class="btn btn-arcade" id="mvChoose">SELECT THIS AFEEQ</button>
+    </div>
+  </div>
+  <div class="mv-chosen" id="mvChosen" aria-live="assertive"></div>
+</section>
+
+<!-- ================================================================
+     SCENE 04 — THE CHAOS ROOM
+     ================================================================ -->
+<section id="chaos" class="scene chaos" aria-labelledby="chaosTitle">
+  <div class="hazard" aria-hidden="true"></div>
+  <div class="chaos-head reveal">
+    <p class="chaos-kicker">SCENE 04</p>
+    <h2 id="chaosTitle" class="chaos-title">THE CHAOS ROOM</h2>
+    <p class="chaos-sub">Everything in here works. That's the problem.</p>
+  </div>
+
+  <div class="chaos-grid">
+    <!-- DO NOT PRESS -->
+    <div class="station st-press">
+      <p class="st-tag">STATION 01</p>
+      <button class="big-red" id="dontPress" aria-describedby="pressMsg"><span>DO NOT<br>PRESS</span></button>
+      <p class="st-msg" id="pressMsg" aria-live="polite">It's pretty self-explanatory.</p>
+    </div>
+
+    <!-- AURA DETECTOR -->
+    <div class="station st-aura">
+      <p class="st-tag">STATION 02 · AFEEQ AURA DETECTOR™</p>
+      <svg class="gauge" viewBox="0 0 200 120" aria-hidden="true">
+        <path class="g-track" d="M20 110 A80 80 0 0 1 180 110" />
+        <path class="g-fill" id="gFill" d="M20 110 A80 80 0 0 1 180 110" pathLength="100" />
+        <line class="g-needle" id="gNeedle" x1="100" y1="110" x2="100" y2="42" />
+        <circle cx="100" cy="110" r="7" class="g-hub" />
+        <text x="10" y="119" class="g-lbl">MID</text><text x="168" y="119" class="g-lbl">HIM</text>
+      </svg>
+      <button class="btn btn-hazard" id="auraBtn">HOLD TO SCAN</button>
+      <p class="st-msg" id="auraMsg" aria-live="polite">Press and hold. Keep holding. Aura takes time.</p>
+    </div>
+
+    <!-- DIAGNOSTIC -->
+    <div class="station st-diag">
+      <p class="st-tag">STATION 03 · SYSTEM DIAGNOSTIC</p>
+      <pre class="terminal" id="terminal" aria-live="polite">C:\AFEEQ&gt; _</pre>
+      <button class="btn btn-term" id="diagBtn">RUN DIAGNOSTIC</button>
+    </div>
+
+    <!-- WISH GENERATOR -->
+    <div class="station st-wish">
+      <p class="st-tag">STATION 04 · BIRTHDAY WISH GENERATOR</p>
+      <div class="slot" aria-live="polite"><p id="wishOut">Press the lever. Get a wish. No refunds.</p></div>
+      <button class="btn btn-hazard" id="wishBtn">PULL THE LEVER 🎰</button>
+    </div>
+
+    <!-- LIGHT SWITCH -->
+    <div class="station st-lights">
+      <p class="st-tag">STATION 05</p>
+      <p class="st-plain">Just a light switch. Nothing weird about it.</p>
+      <button class="switch" id="lightSwitch" role="switch" aria-checked="true" aria-label="Light switch"><span></span></button>
+    </div>
+
+    <!-- GAME -->
+    <div class="station st-game">
+      <p class="st-tag">STATION 06 · MINIGAME</p>
+      <h3 class="game-title">WAKE AFEEQ UP</h3>
+      <p class="st-plain">Smack the sleeping Afeeqs. Touch him while he's eating and you lose 2 points and a friend.</p>
+      <div class="game-hud"><span>SCORE <b id="score">0</b></span><span>TIME <b id="time">20</b></span><span>BEST <b id="best">0</b></span></div>
+      <div class="holes" id="holes"></div>
+      <div class="game-ctl">
+        <button id="startGame" class="btn btn-hazard">START</button>
+        <p id="gameMsg" class="st-msg" aria-live="polite"></p>
       </div>
     </div>
   </div>
+
+  <!-- secrets revealed when the lights go off -->
+  <div class="darkness" aria-hidden="true"></div>
+  <div class="ghost g1" aria-hidden="true">if you're reading this,<br>afeeq is asleep right now.<br><small>statistically.</small></div>
+  <div class="ghost g2" aria-hidden="true"><img src="img/opt/3-sm.webp" width="640" height="480" loading="lazy" alt="">the real gift was<br>the naps we took<br>along the way</div>
+  <div class="ghost g3" aria-hidden="true">psst. type <b>afeeq</b> on a keyboard.<br>or tap the logo 7 times.</div>
 </section>
 
-<!-- ============ GAME ============ -->
-<section id="game" class="section">
-  <p class="eyebrow">Episode 3 · Minigame</p>
-  <h2 class="title">WAKE AFEEQ UP!</h2>
-  <p class="section-sub">Smack the sleeping Afeeqs. <strong>Do NOT</strong> touch him while he's eating. That's -2 points and a lifetime ban.</p>
-  <div class="game-hud">
-    <div>Score <b id="score">0</b></div>
-    <div>Time <b id="time">20</b>s</div>
-    <div>Best <b id="best">0</b></div>
+<!-- ================================================================
+     SCENE 05 — THE LEGENDARY FINALE
+     ================================================================ -->
+<section id="finale" class="scene finale" aria-labelledby="finaleTitle">
+  <div class="finale-pre reveal" id="finalePre">
+    <p class="finale-kicker">SCENE 05 · THE CEREMONY</p>
+    <h2 id="finaleTitle" class="finale-title">You made it.<br><em>He didn't.</em> He's asleep.</h2>
+    <p class="finale-sub">Achievements unlocked: <b id="finaleAch">0/10</b>. Find all 10 for the true ending.</p>
+    <button class="btn btn-gold" id="ceremonyBtn">BEGIN THE CEREMONY</button>
   </div>
-  <div class="holes" id="holes"></div>
-  <div class="game-ctl">
-    <button id="startGame" class="btn btn-big">START ⏰</button>
-    <p id="gameMsg" class="game-msg" aria-live="polite"></p>
-  </div>
-</section>
 
-<!-- ============ CAKE ============ -->
-<section id="cake" class="section">
-  <p class="eyebrow">Episode 4 · The Main Event</p>
-  <h2 class="title">Blow Out The Candles</h2>
-  <p class="section-sub">Blow into your microphone like you're cooling Afeeq's rice. Or just tap each candle, coward.</p>
-  <div class="cake-wrap">
-    <div class="cake" id="cakeEl">
-      <div class="candles" id="candles"></div>
-      <div class="layer l1"><span>HBD</span></div>
-      <div class="layer l2"><span>AFEEQ</span></div>
-      <div class="plate"></div>
+  <div class="finale-show" id="finaleShow" hidden>
+    <p class="lvl-kicker">★ ACHIEVEMENT UNLOCKED ★</p>
+    <h2 class="lvl-title"><span>AFEEQ HAS</span><span>OFFICIALLY</span><span class="gold">LEVELLED UP</span></h2>
+    <div class="xp" aria-label="Experience bar">
+      <div class="xp-row"><span>LV. ??</span><span>365 / 365 DAYS</span><span>LV. ?? + 1</span></div>
+      <div class="xp-bar"><i id="xpFill"></i></div>
+      <ul class="xp-gains">
+        <li>+1 age</li><li>+20 aura</li><li>+15 hair volume</li><li>+0 punctuality <small>(no change detected)</small></li>
+      </ul>
     </div>
-  </div>
-  <div class="cake-ctl">
-    <button id="micBtn" class="btn">🎤 Use microphone</button>
-    <button id="songBtn" class="btn btn-alt">🎵 Play the song</button>
-  </div>
-  <p id="cakeMsg" class="cake-msg" aria-live="polite"></p>
-</section>
 
-<!-- ============ WISHES ============ -->
-<section id="wishes" class="section">
-  <p class="eyebrow">Episode 5</p>
-  <h2 class="title">Send A Wish Balloon</h2>
-  <p class="section-sub">Type a wish for Afeeq and release it into the sky.</p>
-  <form id="wishForm" class="wish-form">
-    <label for="wishInput" class="sr-only">Your wish</label>
-    <input id="wishInput" maxlength="60" placeholder="e.g. may you wake up before 12pm" autocomplete="off">
-    <button class="btn" type="submit">Release 🎈</button>
-  </form>
-  <div class="sky" id="sky" aria-live="polite"></div>
-</section>
+    <figure class="final-photo">
+      <div class="spot" aria-hidden="true"></div>
+      <img src="img/opt/6.webp" width="1400" height="1868" loading="lazy" decoding="async" alt="Afeeq asleep in the car one more time, in the spotlight">
+      <figcaption>Ladies and gentlemen. The birthday boy.<br><em>Absolutely radiant. Completely unconscious.</em></figcaption>
+    </figure>
 
-<!-- ============ LETTER ============ -->
-<section id="letter" class="section">
-  <div class="letter">
-    <p class="eyebrow">Okay, serious for 10 seconds</p>
-    <h2 class="title">Dear Afeeq,</h2>
-    <p>Jokes aside, happy birthday bro. Thanks for being the guy who's always down for a makan trip, the guy who makes every car ride funnier (even when you're unconscious), and the guy whose smile in every photo says "I have no idea what's happening but I'm happy to be here."</p>
-    <p>May this year bring you good health, good food, great sleep (you already have that one), wins in every ranked match, and people who appreciate you as much as we do.</p>
-    <p>Stay weird. Stay sleepy. Stay you.</p>
-    <p class="sign">— your friends, who have many more photos 📸</p>
-    <button id="finalBtn" class="btn btn-big">ONE MORE CONFETTI 🎉</button>
+    <h3 class="hbd">HAPPY BIRTHDAY<br><span>AFEEQ</span></h3>
+
+    <div class="gift-zone">
+      <p class="gift-hint">One last thing. From the boys.</p>
+      <button class="gift" id="gift" aria-expanded="false" aria-controls="letter">
+        <span class="gift-lid" aria-hidden="true"><i></i></span>
+        <span class="gift-box" aria-hidden="true"><i></i></span>
+        <span class="gift-label">OPEN IT</span>
+      </button>
+      <article class="letter" id="letter" hidden>
+        <p class="letter-to">Afeeq,</p>
+        <!-- EDIT THIS MESSAGE: everything inside .letter is plain text. Add your own memories where marked. -->
+        <p>Happy birthday, bro. Okay, one paragraph with no jokes. Pay attention, because it won't happen again.</p>
+        <p>You're one of the real ones. Always down for a makan run, never makes anything awkward, and somehow makes even a long car ride better. Even when you're knocked out in the back seat for most of it.</p>
+        <!-- EDIT: add a specific memory or inside joke here, e.g. <p>Remember when ...</p> -->
+        <p>Another year, another level. Keep grinding, keep eating, keep that hair unreasonably big. Proud to call you my bro.</p>
+        <p>Now wake up and go celebrate.</p>
+        <p class="letter-sign">— Elman <small>&amp; the boys</small></p>
+      </article>
+    </div>
+
+    <div class="finale-ctl">
+      <button class="btn btn-gold" id="runBack">RUN IT BACK 🎉</button>
+    </div>
+
+    <div class="true-end" id="trueEnd">
+      <div class="locked-end" id="lockedEnd">
+        <p class="te-kicker">SECRET ENDING · LOCKED</p>
+        <p>You've found <b id="teCount">0/10</b> achievements. Some things on this site are hiding. Check the 🏆 for hints.</p>
+      </div>
+      <div class="unlocked-end" id="unlockedEnd" hidden>
+        <p class="te-kicker">★ TRUE ENDING UNLOCKED ★</p>
+        <h3>You found every secret.</h3>
+        <p>That means you spent more time on Afeeq's birthday than Afeeq spent awake this year. Respect.</p>
+        <p>Your reward: absolutely nothing. Go tell him happy birthday in person. Bring nasi bamboo.</p>
+        <div class="sticker-wall" id="stickerWall"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -167,24 +444,43 @@
 
 <footer class="foot">
   <p>No Afeeqs were harmed in the making of this website. Several were photographed while asleep.</p>
-  <a href="#top" class="btn btn-small">Back to top ↑</a>
+  <p class="foot-small">Made by Elman. Unauthorised by Afeeq. <button class="zzz-link" id="zzzLink" aria-label="Secret">z z z</button></p>
 </footer>
 
-<!-- lightbox -->
-<dialog id="lightbox" aria-labelledby="lbCap">
-  <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
-  <img id="lbImg" alt="">
-  <p class="lb-narr">🎙️ <em>Narrator voice:</em></p>
-  <p id="lbCap" class="lb-cap"></p>
-  <div class="lb-nav">
-    <button class="btn btn-small" id="lbPrev">← Prev</button>
-    <button class="btn btn-small" id="lbNext">Next →</button>
+<!-- ============ overlays ============ -->
+<dialog id="achDialog" class="ach-dialog" aria-labelledby="achTitle">
+  <div class="ach-head">
+    <h2 id="achTitle">ACHIEVEMENTS</h2>
+    <button class="x" id="achClose" aria-label="Close">✕</button>
   </div>
+  <ul class="ach-list" id="achList"></ul>
+  <button class="btn btn-small btn-ghost-dark" id="achReset">Reset progress</button>
 </dialog>
 
-<button id="soundToggle" class="fab" aria-pressed="true" aria-label="Toggle sound effects">🔊</button>
+<div class="toast-wrap" id="toasts" aria-live="polite"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script src="script.js"></script>
+<div class="crash" id="crash" hidden role="alertdialog" aria-labelledby="crashTitle">
+  <p class="crash-face">:(</p>
+  <h2 id="crashTitle">AFEEQ.EXE ran into a problem and needs to restart.</h2>
+  <p>We're just collecting some error info, and then we'll restart for you.</p>
+  <p class="crash-pct"><span id="crashPct">0</span>% complete</p>
+  <p class="crash-code">Stop code: AURA_OVERFLOW_BIRTHDAY_EXCEPTION<br>What failed: hair.sys</p>
+</div>
+
+<div class="countdown" id="countdown" hidden aria-live="assertive"><span id="cdNum">3</span></div>
+
+<div class="dream" id="dream" hidden role="dialog" aria-modal="true" aria-labelledby="dreamTitle">
+  <div class="dream-sky" aria-hidden="true"></div>
+  <h2 id="dreamTitle" class="dream-title">You have entered Afeeq's dream.</h2>
+  <p class="dream-sub">It's just sheep. And rice. Forever.</p>
+  <div class="dream-field" id="dreamField" aria-hidden="true">
+    <div class="fence"></div>
+  </div>
+  <p class="dream-count">Sheep counted: <b id="sheepCount">0</b></p>
+  <button class="btn btn-paper" id="dreamClose">WAKE UP</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
