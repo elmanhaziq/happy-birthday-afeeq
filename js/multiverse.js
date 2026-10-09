@@ -1,5 +1,5 @@
 // Scene 03 — the Afeeq multiverse: character select with tilt card and joke stats.
-import { $, $$, sfx, unlock, restartAnim, reduceMotion, pick } from './core.js';
+import { $, $$, sfx, unlock, restartAnim, reduceMotion, pick } from './core.js?v=7';
 
 const CHARACTERS = [
   {

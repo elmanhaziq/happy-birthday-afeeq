@@ -37,3 +37,6 @@ img/, img/opt/
 ```
 
 Sound is synthesised in the browser with WebAudio (no audio files) and is **off** until the 🔇 toggle is pressed.
+
+## Deploying changes
+GitHub Pages caches files for 10 minutes. After editing CSS or JS, bump the `?v=N` number on **all** of them in one go (the stylesheet + `main.js` in `index.html`, and every `from './x.js?v=N'` import in `js/`) so browsers never mix old and new files.

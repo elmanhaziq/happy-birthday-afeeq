@@ -1,5 +1,5 @@
 // Secret scene: Afeeq's dream. Triggers: type "afeeq", tap the logo 7 times, or the zzz link.
-import { $, sfx, unlock, restartAnim } from './core.js';
+import { $, sfx, unlock, restartAnim } from './core.js?v=7';
 
 let sheepTimer = null;
 let counted = 0;
